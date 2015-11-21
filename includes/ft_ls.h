@@ -6,7 +6,7 @@
 /*   By: jrosamon <jrosamon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 17:03:42 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/11/20 19:31:26 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/11/21 19:14:27 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void					ft_init_opt(char *opt, char *argv);
 t_list					*ft_new_dir(t_list **head, char *path);
 void					ft_get_dirlst(t_list **head, char **av, int ac);
 int						ft_dir_process(t_list *dirlst);
+t_list					*ft_get_dir_content(DIR *dir, t_list **dir_content, char *dir_path);
+void					ft_dir_recurs(t_list **newdir);
 
 //DEBUG
 void					ft_print_d_name(t_list **head);

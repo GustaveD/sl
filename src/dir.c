@@ -6,7 +6,7 @@
 /*   By: jrosamon <jrosamon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/20 15:31:16 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/11/20 19:39:44 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/11/21 19:59:25 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,50 @@ int			ft_dir_process(t_list *dirlst)
 	tmp = dirlst;
 	dir_content = NULL;
 	dir = opendir(((t_dir*)tmp->content)[0].d_name);
-		printf("opendir\n");
+		printf("opendir '%s'\n", ((t_dir*)tmp->content)[0].d_name);
 	if (dir == NULL)
 		return (-1);
-	else
+	ft_get_dir_content(dir, &dir_content, ((t_dir*)tmp->content)[0].d_name);
+	ft_print_d_name(&dir_content);
+	ft_dir_recurs(&dir_content);
 		return (0);
+}
+
+t_list		*ft_get_dir_content(DIR *dir, t_list **dir_content, char *dir_path)
+{
+	t_list *newdir;
+	t_dir *dirent;
+	char	newpath[500];
+
+	newdir = NULL;
+	while ((dirent = readdir(dir)))
+	{
+		if(dirent->d_name[0] != '.')
+		{
+			ft_strcpy(newpath, dir_path);
+			ft_strcat(newpath, "/");
+			ft_strcat(newpath, dirent->d_name);
+			ft_strcat(newpath, "\0");
+			ft_new_dir(dir_content, newpath);
+		}
+	}
+	return (*dir_content);
+}
+
+void		ft_dir_recurs(t_list **newdir)
+{
+	t_list	*tmp;
+
+	tmp = *newdir;
+	while (tmp)
+	{
+		printf("type == %d\n", ((t_dir*)tmp->content)[0].d_type == DT_DIR);
+		if (((t_dir*)tmp->content)[0].d_type == DT_DIR && ((t_dir*)tmp->content)[0].d_name[2] != '.')
+			ft_dir_process(tmp);
+		else
+			printf("nom du fichier = %s\n", ((t_dir*)tmp->content)[0].d_name);
+		tmp = tmp->next;
+	}
 }
 
 void		ft_get_dirlst(t_list **head, char **av, int ac)
