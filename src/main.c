@@ -6,7 +6,7 @@
 /*   By: jrosamon <jrosamon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 17:02:12 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/11/23 11:50:36 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/11/23 15:13:24 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,12 @@ int		main(int ac, char **av)
 
 	dir = NULL;
 	i = ft_get_opt(opt, av, ac);
-	printf("i = %d\n", i);
 	ft_get_dirlst(&dir, &av[i], ac);
-	ft_ls(&dir);
+	ft_ls(&dir, opt);
 	return (0);
 }
 
-void	ft_ls(t_list **dirlst)
+void	ft_ls(t_list **dirlst, char *opt)
 {
 	t_list	*tmp;
 
@@ -35,11 +34,14 @@ void	ft_ls(t_list **dirlst)
 	{
 		if (((t_dir*)tmp->content)[0].d_type == DT_DIR)
 		{
-			printf("type = %hhu\n", ((t_dir*)tmp->content)[0].d_type);
-			ft_dir_process(tmp);
+		//	printf("type = %hhu\n", ((t_dir*)tmp->content)[0].d_type);
+			ft_dir_process(tmp, opt);
 		}
 		else
-			printf("File's name = '%s'\n", ((t_dir*)tmp->content)[0].d_name);
+		{
+			ft_print_process(((t_dir*)tmp->content)[0].d_name, opt);
+		//	printf("File's name = '%s'\n", ((t_dir*)tmp->content)[0].d_name);
+		}
 		tmp = tmp->next;
 	}	
 }

@@ -6,7 +6,7 @@
 /*   By: jrosamon <jrosamon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 17:03:42 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/11/23 11:47:55 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/11/23 14:57:04 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ void					ft_init_opt(char *opt, char *argv);
 //DIR
 t_list					*ft_new_dir(t_list **head, char *path);
 void					ft_get_dirlst(t_list **head, char **av, int ac);
-int						ft_dir_process(t_list *dirlst);
+int						ft_dir_process(t_list *dirlst, char *opt);
 t_list					*ft_get_dir_content(DIR *dir, t_list **dir_content, char *dir_path);
-void					ft_dir_recurs(t_list **newdir);
+void					ft_dir_recurs(t_list **newdir, char *opt);
 
 //DEBUG
 void					ft_print_d_name(t_list **head);
@@ -55,9 +55,12 @@ void					ft_print_d_name(t_list **head);
 t_stat					*get_data(char *path, t_dir *dirent, t_stat *dstat);
 
 //LS
-void					ft_ls(t_list **dirlst);
+void					ft_ls(t_list **dirlst, char *opt);
 
 //TOOLS
 char					*ft_set_path(t_dir *dirent, char *dir_path, char *newpath);
 void					ft_free_data(void *content, size_t content_size);
+
+//PRINT
+void					ft_print_process(char *name, char *opt);
 #endif

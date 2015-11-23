@@ -6,13 +6,13 @@
 /*   By: jrosamon <jrosamon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/20 15:31:16 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/11/23 11:50:35 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/11/23 15:13:25 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-int			ft_dir_process(t_list *dirlst)
+int			ft_dir_process(t_list *dirlst, char *opt)
 {
 	DIR		*dir;
 	t_list	*dir_content;
@@ -21,12 +21,12 @@ int			ft_dir_process(t_list *dirlst)
 	tmp = dirlst;
 	dir_content = NULL;
 	dir = opendir(((t_dir*)tmp->content)[0].d_name);
-		printf("opendir '%s'\n", ((t_dir*)tmp->content)[0].d_name);
+	//	printf("opendir '%s'\n", ((t_dir*)tmp->content)[0].d_name);
 	if (dir == NULL)
 		return (-1);
 	ft_get_dir_content(dir, &dir_content, ((t_dir*)tmp->content)[0].d_name);
-	ft_print_d_name(&dir_content);
-	ft_dir_recurs(&dir_content);
+//	ft_print_d_name(&dir_content);
+	ft_dir_recurs(&dir_content, opt);
 //	ft_lstdel(&dir_content, ft_free_data);
 		return (0);
 }
@@ -49,18 +49,21 @@ t_list		*ft_get_dir_content(DIR *dir, t_list **dir_content, char *dir_path)
 	return (*dir_content);
 }
 
-void		ft_dir_recurs(t_list **newdir)
+void		ft_dir_recurs(t_list **newdir, char *opt)
 {
 	t_list	*tmp;
 
 	tmp = *newdir;
 	while (tmp)
 	{
-		printf("type == %d\n", ((t_dir*)tmp->content)[0].d_type == DT_DIR);
-		if (((t_dir*)tmp->content)[0].d_type == DT_DIR && ((t_dir*)tmp->content)[0].d_name[2] != '.')
-			ft_dir_process(tmp);
+		if (((t_dir*)tmp->content)[0].d_type == DT_DIR &&/* ((t_dir*)tmp->content)[0].d_name[2] != '.' &&*/
+				O_BR)
+		{
+			ft_dir_process(tmp, opt);
+			ft_putchar('\n');
+		}
 		else
-			printf("nom du fichier = %s\n", ((t_dir*)tmp->content)[0].d_name);
+			ft_print_process(((t_dir*)tmp->content)[0].d_name, opt);
 		tmp = tmp->next;
 	}
 }
