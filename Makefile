@@ -6,7 +6,7 @@
 #    By: jrosamon <jrosamon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/05 16:38:09 by jrosamon          #+#    #+#              #
-#    Updated: 2015/11/20 15:47:45 by jrosamon         ###   ########.fr        #
+#    Updated: 2015/11/23 10:52:47 by jrosamon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ NAME = ft_ls
 
 SRC_NAME = main.c\
 		   opt.c\
-		   dir.c
+		   dir.c\
+		   tools.c
 
 SRC_PATH = ./src/
 SRC = $(addprefix $(SRC_PATH), $(SRC_NAME))
