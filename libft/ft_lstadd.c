@@ -6,7 +6,7 @@
 /*   By: jrosamon <jrosamon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/11 20:56:54 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/11/20 17:42:38 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/11/26 16:56:40 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@ void	ft_lstadd(t_list **alst, t_list *new)
 	t_list *tmp;
 
 	tmp = *alst;
-	new->next = tmp;
-	(*alst) = new;
+	new->next = tmp->next;
+	tmp->next = new;
 }

@@ -6,7 +6,7 @@
 /*   By: jrosamon <jrosamon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 17:02:12 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/11/23 15:13:24 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/11/26 16:58:38 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		main(int ac, char **av)
 
 	dir = NULL;
 	i = ft_get_opt(opt, av, ac);
-	ft_get_dirlst(&dir, &av[i], ac);
+	ft_get_dirlst(&dir, &av[i], ac, opt);
 	ft_ls(&dir, opt);
 	return (0);
 }

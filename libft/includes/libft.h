@@ -6,7 +6,7 @@
 /*   By: jrosamon <jrosamon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 15:19:26 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/11/20 15:58:24 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/11/26 16:41:24 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
 
 typedef struct		s_list
 {
@@ -94,9 +95,6 @@ void				ft_lstadd(t_list **alst, t_list *n);
 void				ft_lstaddafter(t_list *lst, t_list *n);
 void				ft_lstaddfront(t_list **alst, t_list *n);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
-void				ft_lstaddby(t_list **alst, t_list *n,
-							int (*f)(const void *, const void *,
-								size_t, size_t));
 void				ft_lstaddrby(t_list **alst, t_list *n,
 							int (*f)(const void *, const void *,
 								size_t, size_t));

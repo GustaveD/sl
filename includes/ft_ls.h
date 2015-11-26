@@ -6,7 +6,7 @@
 /*   By: jrosamon <jrosamon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 17:03:42 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/11/23 14:57:04 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/11/26 17:11:35 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ int						ft_get_opt(char *opt, char **av, int ac);
 void					ft_init_opt(char *opt, char *argv);
 
 //DIR
-t_list					*ft_new_dir(t_list **head, char *path);
-void					ft_get_dirlst(t_list **head, char **av, int ac);
+t_list					*ft_new_dir(t_list **head, char *path, char *opt);
+void					ft_get_dirlst(t_list **head, char **av, int ac, char *opt);
 int						ft_dir_process(t_list *dirlst, char *opt);
-t_list					*ft_get_dir_content(DIR *dir, t_list **dir_content, char *dir_path);
+t_list					*ft_get_dir_content(DIR *dir, t_list **dir_content, char *dir_path, char *opt);
 void					ft_dir_recurs(t_list **newdir, char *opt);
 
 //DEBUG
@@ -63,4 +63,10 @@ void					ft_free_data(void *content, size_t content_size);
 
 //PRINT
 void					ft_print_process(char *name, char *opt);
+
+//SORT
+void					ft_lstaddbyalph(t_list **head, t_list *n,
+										int(*f)(const char*, const char*));	
+void					ft_lstaddbytime(t_list **head, t_list *n);
+										
 #endif

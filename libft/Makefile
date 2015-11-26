@@ -6,7 +6,7 @@
 #    By: jrosamon <jrosamon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/08/11 21:59:51 by jrosamon          #+#    #+#              #
-#    Updated: 2015/08/09 21:56:36 by jrosamon         ###   ########.fr        #
+#    Updated: 2015/11/26 16:37:14 by jrosamon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,10 +74,6 @@ SRC = ft_atoi.c \
 	  ft_lstadd.c\
 	  ft_lstaddfront.c\
 	  ft_lstaddafter.c\
-	  ft_lstaddby.c\
-	  ft_lstaddrby.c\
-	  ft_lstlnby.c\
-	  ft_lstlnrby.c\
 
 
 INCLUDE = -I ./includes
