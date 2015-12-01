@@ -6,7 +6,7 @@
 /*   By: jrosamon <jrosamon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 17:03:42 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/11/29 20:51:32 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/12/01 14:23:32 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,15 @@ char					*ft_set_path(t_dir *dirent, char *dir_path, char *newpath);
 void					ft_free_data(void *content, size_t content_size);
 
 //PRINT
-void					ft_print_process(char *name, char *opt);
+void					ft_print_process(t_list *lst, char *opt);
+void					ft_print_type(unsigned char type);
 
 //SORT
 void					ft_lstaddbyalph(t_list **head, t_list *n,
-										int(*f)(const char*, const char*));	
-void					ft_lstaddbytime(t_list **head, t_list *n);
-										
+										int(*f)(const char*, const char*), char *opt);
+void					ft_lstaddbytime(t_list **head, t_list *n, char *opt);
+void					ft_lstaddbyalph_r(t_list **head, t_list *n,
+										int(*f)(const char*, const char*));
+void					ft_lstaddbytime_r(t_list **head, t_list *n);
+void					ft_reverslst(t_list **head);										
 #endif

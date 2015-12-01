@@ -6,7 +6,7 @@
 /*   By: jrosamon <jrosamon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 17:02:12 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/11/29 20:48:43 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/12/01 14:06:56 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ int		main(int ac, char **av)
 	i = ft_get_opt(opt, av, ac);
 	ft_get_dirlst(&dir, &av[i], ac, opt);
 	ft_print_d_name(&dir);
-//	ft_ls(&dir, opt);
+//	if (O_R)
+//		ft_reverslst(&dir);
+	ft_ls(&dir, opt);
 	return (0);
 }
 
@@ -33,14 +35,11 @@ void	ft_ls(t_list **dirlst, char *opt)
 	tmp = *dirlst;
 	while (tmp)
 	{
-		if (((t_dir*)tmp->content)[0].d_type == DT_DIR)
-		{
-		//	printf("type = %hhu\n", ((t_dir*)tmp->content)[0].d_type);
+		if (((t_info*)tmp->content)->dirent->d_type == DT_DIR)
 			ft_dir_process(tmp, opt);
-		}
 		else
 		{
-			ft_print_process(((t_dir*)tmp->content)[0].d_name, opt);
+			ft_print_process(tmp, opt);
 		//	printf("File's name = '%s'\n", ((t_dir*)tmp->content)[0].d_name);
 		}
 		tmp = tmp->next;
