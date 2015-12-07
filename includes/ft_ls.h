@@ -6,7 +6,7 @@
 /*   By: jrosamon <jrosamon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 17:03:42 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/12/01 14:23:32 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/12/07 13:53:43 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@
 # define O_R (opt[4])
 # define O_T (opt[5])
 # define NEED_PATH (O_L || O_BR || O_T)
+
+# define MINOR(x) ((x) & 0xffffff)
+# define MAJOR(x) (((x) >> 24) & 0xff)
 
 typedef struct dirent	t_dir;
 typedef struct stat  	t_stat;
@@ -74,6 +77,8 @@ void					ft_free_data(void *content, size_t content_size);
 //PRINT
 void					ft_print_process(t_list *lst, char *opt);
 void					ft_print_type(unsigned char type);
+void					ft_print_right(int right);
+
 
 //SORT
 void					ft_lstaddbyalph(t_list **head, t_list *n,
@@ -82,5 +87,11 @@ void					ft_lstaddbytime(t_list **head, t_list *n, char *opt);
 void					ft_lstaddbyalph_r(t_list **head, t_list *n,
 										int(*f)(const char*, const char*));
 void					ft_lstaddbytime_r(t_list **head, t_list *n);
-void					ft_reverslst(t_list **head);										
+void					ft_reverslst(t_list **head);
+
+//OPT_L
+void					get_max(t_list *lst, char *max);
+void					get_uid_gid(char *buf, t_stat *stat, uid_t *uid, gid_t *gid);
+void					get_max_size(char *buf, t_dir *dir, t_stat *stat);
+void					ft_print_totaldir(t_list *lst);
 #endif

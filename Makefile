@@ -6,7 +6,7 @@
 #    By: jrosamon <jrosamon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/05 16:38:09 by jrosamon          #+#    #+#              #
-#    Updated: 2015/11/26 15:37:07 by jrosamon         ###   ########.fr        #
+#    Updated: 2015/12/07 13:13:47 by jrosamon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ SRC_NAME = main.c\
 		   dir.c\
 		   tools.c\
 		   print.c\
-		   sort.c
+		   sort.c\
+		   max.c
 
 SRC_PATH = ./src/
 SRC = $(addprefix $(SRC_PATH), $(SRC_NAME))

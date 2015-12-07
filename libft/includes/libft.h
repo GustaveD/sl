@@ -6,7 +6,7 @@
 /*   By: jrosamon <jrosamon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 15:19:26 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/11/26 16:41:24 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/12/07 13:11:44 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,5 +105,7 @@ t_list				*ft_lstlnby(t_list **alst, void *data, size_t csize,
 t_list				*ft_lstlnrby(t_list **alst, void *data, size_t csize,
 							int (*f)(const void *, const void *,
 								size_t, size_t));
+
+unsigned int		ft_nbrlen(int n);
 
 #endif
