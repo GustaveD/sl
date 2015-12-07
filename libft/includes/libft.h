@@ -6,7 +6,7 @@
 /*   By: jrosamon <jrosamon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 15:19:26 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/12/07 13:11:44 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/12/07 17:49:58 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,8 @@ t_list				*ft_lstlnrby(t_list **alst, void *data, size_t csize,
 								size_t, size_t));
 
 unsigned int		ft_nbrlen(int n);
+int					ft_power(int nbr, int power);
+int					ft_power_rec(int nbr, int power);
+void				ft_putnstr(char const *s, int n);
 
 #endif

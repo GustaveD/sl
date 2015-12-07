@@ -6,7 +6,7 @@
 /*   By: jrosamon <jrosamon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 17:03:42 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/12/07 13:53:43 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/12/07 18:08:38 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "libft.h"
 # include <stdio.h>
 # include <dirent.h>
+# include <time.h>
 # include <pwd.h>
 # include <grp.h>
 # include <sys/types.h>
@@ -77,7 +78,8 @@ void					ft_free_data(void *content, size_t content_size);
 //PRINT
 void					ft_print_process(t_list *lst, char *opt);
 void					ft_print_type(unsigned char type);
-void					ft_print_right(int right);
+void					ft_print_right(int right, int i);
+void					ft_print_info(char *opt, t_list *lst, char *max);
 
 
 //SORT
@@ -94,4 +96,12 @@ void					get_max(t_list *lst, char *max);
 void					get_uid_gid(char *buf, t_stat *stat, uid_t *uid, gid_t *gid);
 void					get_max_size(char *buf, t_dir *dir, t_stat *stat);
 void					ft_print_totaldir(t_list *lst);
+void					ft_print_xright(char *fpath);
+void					ft_print_link(int nbr, char *max);
+void					ft_print_group(t_stat *stat, char *max);
+void					ft_print_size(int size, char *max);
+void					ft_print_device(int device, char *max);
+void					ft_print_about(t_stat *stat);
+void					ft_print_lnkabout(char *path);
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: jrosamon <jrosamon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/20 15:31:16 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/12/07 13:57:53 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/12/07 18:10:27 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ t_list		*ft_new_dir2(t_list **head, char *path, char *opt)
 	t_info	*info;
 	int		(*f)(const char *, const char *);
 	
-
 	info = NULL;
 	f = &ft_strcmp;
 	if (!(newdir = (t_list*)malloc(sizeof(t_list))))

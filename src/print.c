@@ -6,7 +6,7 @@
 /*   By: jrosamon <jrosamon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 14:31:41 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/12/07 13:57:51 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/12/07 18:10:26 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,8 @@ void	ft_print_process(t_list *lst, char *opt)
 	{
 		get_max(lst, max);
 		ft_print_totaldir(lst);
-		ft_print_type(((t_info*)lst->content)->dirent->d_type);
-		ft_print_right(((t_info*)lst->content)->stat->st_mode);
-		fprintf(stdout, "protec = %o\n", ((t_info*)lst->content)->stat->st_mode);
 	}
-		ft_putstr(((t_info*)lst->content)->dirent->d_name);
-		ft_putchar('\n');
+	ft_print_info(opt, lst, max);
 		if (O_A)
 			;
 }
@@ -66,9 +62,4 @@ void	ft_print_type(unsigned char type)
 		ft_putchar('s');
 	else
 		ft_putchar('-');
-}
-
-void	ft_print_right(int right)
-{
-	fprintf (stdout, "\t%o\t", right);
 }

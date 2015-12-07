@@ -6,7 +6,7 @@
 /*   By: jrosamon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 12:34:18 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/12/07 13:57:52 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/12/07 15:53:24 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,6 @@ void	get_max(t_list *lst, char *buff)
 		lst = lst->next;
 	}
 	buff[0] = (char)ft_nbrlen(lnk);
-	printf("buff[0] = %d\n", buff[0]);
-	printf("buff[1] = %d\n", buff[1]);
-	printf("buff[2] = %d\n", buff[2]);
-	printf("buff[3] = %d\n", buff[3]);
-	printf("buff[4] = %d\n", buff[4]);
 }
 
 void		get_uid_gid(char *buf, t_stat *stat, uid_t *uid, gid_t *gid)
