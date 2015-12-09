@@ -6,7 +6,7 @@
 /*   By: jrosamon <jrosamon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 10:42:27 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/12/07 16:54:51 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/12/09 11:26:10 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,22 @@ void	ft_free_data(void *content, size_t content_size)
 		if ((t_stat*)data[1] != NULL)
 			free((t_stat*)data[0]);
 		free(data);
+	}
+}
+
+void	ft_free_info(void *content, size_t content_size)
+{
+	t_info	*info;
+
+	info = content;
+	(void)content_size;
+
+	if (info)
+	{
+		if (info->dirent)
+			free(info->dirent);
+		if (info->stat)
+			free(info->stat);
+		free(info);
 	}
 }

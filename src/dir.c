@@ -6,7 +6,7 @@
 /*   By: jrosamon <jrosamon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/20 15:31:16 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/12/07 18:10:27 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/12/09 11:26:37 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int			ft_dir_process(t_list *dirlst, char *opt)
 		return (-1);
 	ft_get_dir_content(dir, &dir_content, ((t_info*)tmp->content)->dirent->d_name, opt);
 	ft_dir_recurs(&dir_content, opt);
-//	ft_lstdel(&dir_content, ft_free_data);
+	ft_lstdel(&dir_content, ft_free_info);
 		return (0);
 }
 

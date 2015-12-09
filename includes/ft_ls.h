@@ -6,7 +6,7 @@
 /*   By: jrosamon <jrosamon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 17:03:42 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/12/07 18:08:38 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/12/09 11:26:33 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void					ft_ls(t_list **dirlst, char *opt);
 //TOOLS
 char					*ft_set_path(t_dir *dirent, char *dir_path, char *newpath);
 void					ft_free_data(void *content, size_t content_size);
+void					ft_free_info(void *content, size_t content_size);
 
 //PRINT
 void					ft_print_process(t_list *lst, char *opt);
@@ -104,4 +105,6 @@ void					ft_print_device(int device, char *max);
 void					ft_print_about(t_stat *stat);
 void					ft_print_lnkabout(char *path);
 
+//ERROR
+void					ft_error(char *s);
 #endif
