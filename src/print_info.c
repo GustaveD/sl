@@ -6,7 +6,7 @@
 /*   By: jrosamon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 15:18:10 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/12/07 18:34:14 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/12/14 18:16:44 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,24 @@ void		ft_print_info(char *opt, t_list *lst, char *max)
 				ft_print_size(((t_info*)lst->content)->stat->st_size, max);
 			ft_print_about(((t_info*)lst->content)->stat);
 		}
-		ft_putstr(((t_info*)lst->content)->dirent->d_name);
+		ft_print_name((t_info*)lst->content, opt);
 		if (O_L && ((t_info*)lst->content)->dirent->d_type)
 			ft_print_lnkabout(((t_info*)lst->content)->dirent->d_name);
 		ft_putchar('\n');
+}
+
+void		ft_print_name(t_info *info, char *opt)
+{
+	int i;
+
+	i = 0;
+	if (!O_BR)
+	{
+		while (info->dirent->d_name[i] == '.' ||
+				info->dirent->d_name[i] == '/')
+			i++;
+	}
+	ft_putstr(&(info->dirent->d_name[i]));
 }
 
 void		ft_print_right(int right, int i)

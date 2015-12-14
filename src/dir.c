@@ -6,7 +6,7 @@
 /*   By: jrosamon <jrosamon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/20 15:31:16 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/12/09 11:26:37 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/12/14 18:16:46 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int			ft_dir_process(t_list *dirlst, char *opt)
 	if (dir == NULL)
 		return (-1);
 	ft_get_dir_content(dir, &dir_content, ((t_info*)tmp->content)->dirent->d_name, opt);
+	if (O_BR)
+		ft_print_d_name(&dir_content);
 	ft_dir_recurs(&dir_content, opt);
 	ft_lstdel(&dir_content, ft_free_info);
 		return (0);
@@ -61,8 +63,10 @@ void		ft_dir_recurs(t_list **newdir, char *opt)
 				ft_strcmp(((t_info*)tmp->content)->dirent->d_name, ".") != 0 && 
 				ft_strcmp(((t_info*)tmp->content)->dirent->d_name,"..") != 0 && O_BR)
 		{
+			ft_putstr("\n");
+			ft_print_name((t_info*)tmp->content, opt);
+			ft_putstr(":\n");
 			ft_dir_process(tmp, opt);
-			ft_putchar('\n');
 		}
 		else
 			ft_print_process(tmp, opt);
@@ -77,11 +81,11 @@ void		ft_get_dirlst(t_list **head, char **av, int ac, char *opt)
 	i = 0;
 	if (!av[i])
 		ft_new_dir2(head, ".", opt);
-	while (i < ac && av[i])
+	while (i < ac && av[i] && !O_END)
 	{
 		//ft_new_dir(head, av[i], opt);
 		ft_new_dir2(head, av[i], opt);
-		i++;	
+		i++;
 	}
 }
 
@@ -144,7 +148,22 @@ void		ft_print_d_name(t_list **head)
 	tmp = *head;
 	while (tmp)
 	{
-		printf("dir-name = '%s'\n", ((t_info*)tmp->content)->dirent->d_name);
-		tmp = tmp->next;
+			ft_print_dir_name(((t_info*)tmp->content)->dirent->d_name);
+			tmp = tmp->next;
 	}
+	//	ft_putstr("\n");
+}
+
+void		ft_print_dir_name(char *str)
+{
+	int i;
+
+	i = ft_strlen(str);
+	while (str[i] != '/')
+		i--;
+	if (str[i+1] != '.')
+	{
+		ft_putstr(&(str[i + 1]));
+				ft_putstr("\n");
+		}
 }

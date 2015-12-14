@@ -6,7 +6,7 @@
 /*   By: jrosamon <jrosamon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 17:03:42 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/12/09 11:26:33 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/12/14 17:05:01 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@
 # define O_A (opt[3])
 # define O_R (opt[4])
 # define O_T (opt[5])
+# define O_1 (opt[6])
+# define O_END (opt[7])
 # define NEED_PATH (O_L || O_BR || O_T)
 
 # define MINOR(x) ((x) & 0xffffff)
@@ -81,6 +83,7 @@ void					ft_print_process(t_list *lst, char *opt);
 void					ft_print_type(unsigned char type);
 void					ft_print_right(int right, int i);
 void					ft_print_info(char *opt, t_list *lst, char *max);
+void					ft_print_dir_name(char *str);
 
 
 //SORT
@@ -104,6 +107,7 @@ void					ft_print_size(int size, char *max);
 void					ft_print_device(int device, char *max);
 void					ft_print_about(t_stat *stat);
 void					ft_print_lnkabout(char *path);
+void					ft_print_name(t_info* info, char *opt);
 
 //ERROR
 void					ft_error(char *s);

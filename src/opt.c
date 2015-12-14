@@ -6,7 +6,7 @@
 /*   By: jrosamon <jrosamon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/20 12:10:50 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/11/29 19:59:40 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/12/14 14:41:51 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ void	ft_init_opt(char *opt, char *arg)
 			O_A = 1;
 		else if (arg[i] == 't')
 			O_T = 1;
+		else if (arg[i] == '1')
+			O_1 = 1;
+		else if (arg[i] == '-')
+			O_END = 1;
 		else
 		{
 			ft_putstr("illegal options\n");
@@ -44,11 +48,12 @@ int		ft_get_opt(char *opt, char **av, int ac)
 	int i;
 
 	i = 1;
-	ft_bzero(opt, 6);
-	while (i < ac && av[i][0] == '-' && av[i])
+	ft_bzero(opt, 8);
+	while (i < ac && av[i][0] == '-' && av[i] && !O_END)
 	{
 		ft_init_opt(opt, av[i]);
-		i++;	
+		i++;
 	}
+	i += (O_END) ? 2 : 0;
 	return (i);
 }
