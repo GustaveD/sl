@@ -6,7 +6,7 @@
 /*   By: jrosamon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 15:18:10 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/12/14 18:16:44 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/12/15 15:25:09 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,13 @@ void		ft_print_name(t_info *info, char *opt)
 	int i;
 
 	i = 0;
-	if (!O_BR)
+	if (!O_BR && !O_A)
 	{
 		while (info->dirent->d_name[i] == '.' ||
 				info->dirent->d_name[i] == '/')
 			i++;
 	}
+//	if (!ft_is_hidden(&(info->dirent->d_name[i])))
 	ft_putstr(&(info->dirent->d_name[i]));
 }
 

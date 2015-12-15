@@ -6,7 +6,7 @@
 /*   By: jrosamon <jrosamon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/20 15:31:16 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/12/14 18:16:46 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/12/15 15:25:08 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,15 @@ void		ft_dir_recurs(t_list **newdir, char *opt)
 	{
 		if (((t_info*)tmp->content)->dirent->d_type == DT_DIR &&
 				ft_strcmp(((t_info*)tmp->content)->dirent->d_name, ".") != 0 && 
-				ft_strcmp(((t_info*)tmp->content)->dirent->d_name,"..") != 0 && O_BR)
+				ft_strcmp(((t_info*)tmp->content)->dirent->d_name,"..") != 0 &&
+				O_BR)
 		{
-			ft_putstr("\n");
-			ft_print_name((t_info*)tmp->content, opt);
-			ft_putstr(":\n");
+			if (!ft_is_hidden(((t_info*)tmp->content)->dirent->d_name) && !O_A)
+			{
+				ft_putstr("\n");
+				ft_print_name((t_info*)tmp->content, opt);
+				ft_putstr(":\n");
+			}
 			ft_dir_process(tmp, opt);
 		}
 		else
@@ -83,7 +87,6 @@ void		ft_get_dirlst(t_list **head, char **av, int ac, char *opt)
 		ft_new_dir2(head, ".", opt);
 	while (i < ac && av[i] && !O_END)
 	{
-		//ft_new_dir(head, av[i], opt);
 		ft_new_dir2(head, av[i], opt);
 		i++;
 	}
@@ -161,9 +164,22 @@ void		ft_print_dir_name(char *str)
 	i = ft_strlen(str);
 	while (str[i] != '/')
 		i--;
-	if (str[i+1] != '.')
+	if (str[i + 1] != '.')
 	{
 		ft_putstr(&(str[i + 1]));
-				ft_putstr("\n");
-		}
+		ft_putstr("\n");
+	}
+}
+
+int		ft_is_hidden(char *str)
+{
+	int i;
+
+	i = ft_strlen(str);
+	while (str[i] != '/')
+		i--;
+	if (str[i + 1] == '.')
+		return (1);
+	else
+		return (0);
 }
