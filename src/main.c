@@ -6,7 +6,7 @@
 /*   By: jrosamon <jrosamon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 17:02:12 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/12/15 15:19:57 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/12/18 12:38:31 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	ft_ls(t_list **dirlst, char *opt)
 	t_list	*tmp;
 
 	tmp = *dirlst;
+	IS_OPT = (tmp->next == NULL) ? 3 : 2; // ". || dir1 dir2"
 	while (tmp)
 	{
 		if (((t_info*)tmp->content)->dirent->d_type == DT_DIR)
@@ -42,5 +43,6 @@ void	ft_ls(t_list **dirlst, char *opt)
 		else
 			ft_print_process(tmp, opt);
 		tmp = tmp->next;
+		IS_OPT = 1;
 	}	
 }

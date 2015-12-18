@@ -6,7 +6,7 @@
 /*   By: jrosamon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 15:18:10 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/12/15 15:25:09 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/12/18 12:38:29 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ void		ft_print_info(char *opt, t_list *lst, char *max)
 				ft_print_size(((t_info*)lst->content)->stat->st_size, max);
 			ft_print_about(((t_info*)lst->content)->stat);
 		}
-		ft_print_name((t_info*)lst->content, opt);
+		ft_putstr(((t_info*)lst->content)->dirent->d_name);
+	//	ft_print_name((t_info*)lst->content, opt);
 		if (O_L && ((t_info*)lst->content)->dirent->d_type)
 			ft_print_lnkabout(((t_info*)lst->content)->dirent->d_name);
 		ft_putchar('\n');
@@ -36,17 +37,16 @@ void		ft_print_info(char *opt, t_list *lst, char *max)
 
 void		ft_print_name(t_info *info, char *opt)
 {
-	int i;
-
-	i = 0;
-	if (!O_BR && !O_A)
+	if (IS_OPT)
 	{
-		while (info->dirent->d_name[i] == '.' ||
-				info->dirent->d_name[i] == '/')
-			i++;
+		if (IS_OPT < 2)
+			ft_putchar('\n');
+		if (IS_OPT < 3)
+		{
+			ft_putstr(info->dirent->d_name);
+			ft_putstr(":\n");
+		}
 	}
-//	if (!ft_is_hidden(&(info->dirent->d_name[i])))
-	ft_putstr(&(info->dirent->d_name[i]));
 }
 
 void		ft_print_right(int right, int i)

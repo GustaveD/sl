@@ -6,7 +6,7 @@
 /*   By: jrosamon <jrosamon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/20 15:31:16 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/12/15 15:25:08 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/12/18 12:38:28 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,21 @@ int			ft_dir_process(t_list *dirlst, char *opt)
 
 	tmp = dirlst;
 	dir_content = NULL;
+	if (IS_OPT)
+		ft_print_name(((t_info*)tmp->content),opt);
 	dir = opendir(((t_info*)tmp->content)->dirent->d_name);
 	if (dir == NULL)
 		return (-1);
 	ft_get_dir_content(dir, &dir_content, ((t_info*)tmp->content)->dirent->d_name, opt);
-	if (O_BR)
-		ft_print_d_name(&dir_content);
-	ft_dir_recurs(&dir_content, opt);
-	ft_lstdel(&dir_content, ft_free_info);
-		return (0);
+//	if (O_BR)
+//		ft_print_d_name(&dir_content);
+/	if (dir_content)
+	{
+		ft_dir_recurs(&dir_content, opt);
+		ft_lstdel(&dir_content, ft_free_info);
+	}
+	closedir(dir);
+	return (0);
 }
 
 t_list		*ft_get_dir_content(DIR *dir, t_list **dir_content, char *dir_path, char *opt)
