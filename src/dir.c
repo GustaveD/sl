@@ -6,7 +6,7 @@
 /*   By: jrosamon <jrosamon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/20 15:31:16 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/12/18 13:27:34 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/12/18 17:15:29 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,10 @@ int			ft_dir_process(t_list *dirlst, char *opt)
 	if (dir == NULL)
 		return (-1);
 	ft_get_dir_content(dir, &dir_content, ((t_info*)tmp->content)->dirent->d_name, opt);
-//	if (O_BR)
-//		ft_print_d_name(&dir_content);
 	if (dir_content)
 	{
 		if (IS_OPT)
-		{
-			ft_print_process(dir_content, opt);
-		}
+			ft_print_process(&dir_content, opt);
 		ft_dir_recurs(&dir_content, opt);
 		ft_lstdel(&dir_content, ft_free_info);
 	}
@@ -69,18 +65,12 @@ void		ft_dir_recurs(t_list **newdir, char *opt)
 	tmp = *newdir;
 	while (tmp)
 	{
-		IS_OPT = (((t_info*)tmp->content)->dirent->d_name[0] != '.');
+		IS_OPT = (((t_info*)tmp->content)->dirent->d_name[2] != '.');
 		if (((t_info*)tmp->content)->dirent->d_type == DT_DIR &&
 				ft_strcmp(((t_info*)tmp->content)->dirent->d_name, ".") != 0 && 
 				ft_strcmp(((t_info*)tmp->content)->dirent->d_name,"..") != 0 &&
 				O_BR)
 		{
-			//if (!ft_is_hidden(((t_info*)tmp->content)->dirent->d_name) && !O_A)
-		//	{
-		//		ft_putstr("\n");
-		//		ft_print_name((t_info*)tmp->content, opt);
-		//		ft_putstr(":\n");
-		//	}
 			ft_dir_process(tmp, opt);
 		}
 		tmp = tmp->next;

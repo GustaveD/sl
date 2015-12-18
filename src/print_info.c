@@ -6,7 +6,7 @@
 /*   By: jrosamon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 15:18:10 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/12/18 13:27:37 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/12/18 18:27:54 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void		ft_print_info(char *opt, t_list *lst, char *max)
 {
-
 		if (O_L)
 		{
 			ft_print_type(((t_info*)lst->content)->dirent->d_type);
@@ -29,11 +28,29 @@ void		ft_print_info(char *opt, t_list *lst, char *max)
 				ft_print_size(((t_info*)lst->content)->stat->st_size, max);
 			ft_print_about(((t_info*)lst->content)->stat);
 		}
-		ft_putstr(((t_info*)lst->content)->dirent->d_name);
-	//	ft_print_name((t_info*)lst->content, opt);
+		ft_print_name_file(((t_info*)lst->content)->dirent->d_name);
+	//	ft_putstr(((t_info*)lst->content)->dirent->d_name);
 		if (O_L && ((t_info*)lst->content)->dirent->d_type)
 			ft_print_lnkabout(((t_info*)lst->content)->dirent->d_name);
 		ft_putchar('\n');
+}
+
+void		ft_print_name_file(char *name)
+{
+	int i;
+
+	i = 0;
+	i = ft_strlen(name);
+	while (name[i] != '/')
+	{
+		if (i <= 0)
+			break;
+		i--;
+	}
+	if (i == 0)
+		ft_putstr(&name[i]);
+	else
+		ft_putstr(&name[i+1]);
 }
 
 void		ft_print_name(t_info *info, char *opt)

@@ -6,7 +6,7 @@
 /*   By: jrosamon <jrosamon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 17:03:42 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/12/18 13:23:13 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/12/18 17:09:10 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void					ft_free_info(void *content, size_t content_size);
 int						ft_is_hidden(char *s);
 
 //PRINT
-void					ft_print_process(t_list *lst, char *opt);
+void					ft_print_process(t_list **lst, char *opt);
 void					ft_print_type(unsigned char type);
 void					ft_print_right(int right, int i);
 void					ft_print_info(char *opt, t_list *lst, char *max);
@@ -109,6 +109,7 @@ void					ft_print_device(int device, char *max);
 void					ft_print_about(t_stat *stat);
 void					ft_print_lnkabout(char *path);
 void					ft_print_name(t_info* info, char *opt);
+void					ft_print_name_file(char *name);
 
 //ERROR
 void					ft_error(char *s);

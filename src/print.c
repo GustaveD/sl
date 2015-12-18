@@ -6,30 +6,28 @@
 /*   By: jrosamon <jrosamon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 14:31:41 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/12/18 13:27:39 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/12/18 17:29:04 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void	ft_print_process(t_list *lst, char *opt)
+void	ft_print_process(t_list **lst, char *opt)
 {
 	char	max[5];
 	t_list	*tmp;
 
-	tmp = lst;
+	tmp = *lst;
 	if (O_L)
 	{
-		get_max(lst, max);
-		ft_print_totaldir(lst);
+		get_max(tmp, max);
+		ft_print_totaldir(tmp);
 	}
 	while (tmp)
 	{
-		
 		if (O_A || ((t_info*)tmp->content)->dirent->d_name[2] != '.')
 			ft_print_info(opt, tmp, max);
 		tmp = tmp->next;
-		
 	}
 }
 
