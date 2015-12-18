@@ -6,7 +6,7 @@
 /*   By: jrosamon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 15:18:10 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/12/18 12:38:29 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/12/18 13:27:37 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void		ft_print_info(char *opt, t_list *lst, char *max)
 {
+
 		if (O_L)
 		{
 			ft_print_type(((t_info*)lst->content)->dirent->d_type);

@@ -6,7 +6,7 @@
 /*   By: jrosamon <jrosamon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 17:02:12 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/12/18 12:38:31 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/12/18 13:02:00 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_ls(t_list **dirlst, char *opt)
 			ft_dir_process(tmp, opt);
 		}
 		else
-			ft_print_process(tmp, opt);
+			ft_print_info(opt, tmp, NULL);
 		tmp = tmp->next;
 		IS_OPT = 1;
 	}	
