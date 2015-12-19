@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   putstr.c                                           :+:      :+:    :+:   */
+/*   ft_putnbr_r.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrosamon <jrosamon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrosamon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/06 17:14:02 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/12/19 17:03:31 by jrosamon         ###   ########.fr       */
+/*   Created: 2015/12/19 16:56:19 by jrosamon          #+#    #+#             */
+/*   Updated: 2015/12/19 17:36:01 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(char const *s)
+void	ft_putnbr_r(int n, int lenght)
 {
-	while (*s)
-	{
-		ft_putchar(*s);
-		s++;
-	}
-}
+	char	*res;
+	int		i;
 
-void	ft_putnstr(char const *s, int n)
-{
-	write (1, s, n);
+	res = ft_itoa(n);
+	i = lenght - ft_strlen(res);
+	if (i == 0)
+		ft_putstr(res);
+	else
+	{
+		while (i > 0)
+		{
+			ft_putchar(' ');
+			i--;
+		}
+		ft_putstr(res);
+	}
 }

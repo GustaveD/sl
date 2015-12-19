@@ -6,7 +6,7 @@
 /*   By: jrosamon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 15:18:10 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/12/18 18:27:54 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/12/19 17:35:59 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void		ft_print_link(int nbr, char *max)
 {
 	ft_putchar(' ');
 	if (max)
-		ft_putnbr(nbr);
+		ft_putnbr_r(nbr, max[0]);
 	else
 		ft_putnbr(nbr);
 	ft_putchar(' ');
@@ -118,11 +118,12 @@ void		ft_print_link(int nbr, char *max)
 
 void		ft_print_device(int device, char *max)
 {
-	(void)max;
 	if (max)
+		ft_putnbr_r(MAJOR(device), max[3] - 2 - max[4]);
+	else
 		ft_putnbr(MAJOR(device));
 	ft_putstr(", ");
-	ft_putnbr(MINOR(device));
+	ft_putnbr_r(MINOR(device), (max) ? max[2] : 0);
 }
 
 void		ft_print_group(t_stat *stat, char *max)
@@ -130,12 +131,12 @@ void		ft_print_group(t_stat *stat, char *max)
 	struct passwd	*usr;
 	struct group	*grp;
 
-	(void)max;
 	usr = getpwuid(stat->st_uid);
 	if (usr)
 		ft_putstr(usr->pw_name);
-//	else
-//		ft_putstr(stat->st_uid);
+	else
+		ft_putnbr_r(stat->st_uid, (max) ? max[1] : 0);
+	ft_putchar(' ');
 	ft_putchar(' ');
 	grp = getgrgid(stat->st_gid);
 	if (grp)
@@ -145,8 +146,10 @@ void		ft_print_group(t_stat *stat, char *max)
 
 void		ft_print_size(int size, char *max)
 {
-	(void)max;
+	ft_putchar(' ');
 	if (max)
+		ft_putnbr_r(size, max[3]);
+	else
 		ft_putnbr(size);
 }
 

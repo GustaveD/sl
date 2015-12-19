@@ -6,7 +6,7 @@
 /*   By: jrosamon <jrosamon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 14:31:41 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/12/18 17:29:04 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/12/19 17:35:58 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_print_totaldir(t_list *lst)
 		total += ((t_info*)lst->content)->stat->st_blocks;
 		lst = lst->next;
 	}
-	if (total > 0)
+	if (total >= 0)
 	{
 		ft_putstr("total ");
 		ft_putnbr(total);

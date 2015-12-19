@@ -6,7 +6,7 @@
 /*   By: jrosamon <jrosamon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 15:19:26 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/12/07 17:49:58 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/12/19 17:36:01 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,5 +110,6 @@ unsigned int		ft_nbrlen(int n);
 int					ft_power(int nbr, int power);
 int					ft_power_rec(int nbr, int power);
 void				ft_putnstr(char const *s, int n);
+void				ft_putnbr_r(int n, int lenght);
 
 #endif
