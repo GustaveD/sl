@@ -6,7 +6,7 @@
 /*   By: jrosamon <jrosamon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/20 12:10:50 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/12/18 17:03:53 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/12/21 12:24:27 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ int		ft_get_opt(char *opt, char **av, int ac)
 	i = 1;
 	ft_bzero(opt, 8);
 	IS_OPT = 1;
-	while (i < ac && av[i][0] == '-' && av[i] && !O_END)
+	while (i < ac && av[i][0] == '-' && av[i][1] != '\0' && !O_END)
 	{
 		ft_init_opt(opt, av[i]);
 		i++;
 	}
-	i += (O_END) ? 2 : 0;
+//	i += (O_END) ? 2 : 0;
 	return (i);
 }

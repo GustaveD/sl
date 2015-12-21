@@ -6,7 +6,7 @@
 /*   By: jrosamon <jrosamon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/20 15:31:16 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/12/18 17:15:29 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/12/21 12:24:28 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,10 @@ void		ft_get_dirlst(t_list **head, char **av, int ac, char *opt)
 
 	i = 0;
 	if (!av[i])
+	{
 		ft_new_dir2(head, ".", opt);
-	while (i < ac && av[i] && !O_END)
+	}
+	while (i < ac && av[i])
 	{
 		ft_new_dir2(head, av[i], opt);
 		i++;
