@@ -6,7 +6,7 @@
 /*   By: jrosamon <jrosamon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 15:32:47 by jrosamon          #+#    #+#             */
-/*   Updated: 2015/12/18 17:58:36 by jrosamon         ###   ########.fr       */
+/*   Updated: 2015/12/21 18:59:30 by jrosamon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ void		ft_lstaddbytime(t_list **head, t_list *new, char *opt)
 
 	tmp = *head;
 	prev = NULL;
-	while (tmp && ((!O_R &&(((t_info*)tmp->content)->stat->st_mtime >
+	while (tmp && ((!O_R &&(((t_info*)tmp->content)->stat->st_mtime >=
 				((t_info*)new->content)->stat->st_mtime)) ||
-				((O_R &&(((t_info*)tmp->content)->stat->st_mtime <
+				((O_R &&(((t_info*)tmp->content)->stat->st_mtime <=
 				((t_info*)new->content)->stat->st_mtime)))))
 			
 	{
@@ -55,3 +55,4 @@ void		ft_lstaddbytime(t_list **head, t_list *new, char *opt)
 	else
 		ft_lstaddfront(head, new);
 }
+
